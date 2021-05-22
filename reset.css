@@ -1,0 +1,119 @@
+@media (max-width: 600px) {
+    :root {
+        font-size: 8px;
+    }
+}
+*,::placeholder,::before,::after {
+    font-size: inherit;
+    font-family: inherit;
+    line-break: strict;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    line-break: strict;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+html {
+    overflow: auto;
+}
+ol,ul {
+    list-style-type: none;
+    list-style-position: inside;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+  
+
+/* //www.i-ryo.com/entry/2019/08/24/225050 */
+input,
+button,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font: inherit;
+  outline: none;
+  display:block;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  display: none;
+}
+
+input[type='submit'],
+input[type='button'],
+label,
+button,
+select {
+  cursor: pointer;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+
+body {
+    font-family: Helvetica, "游ゴシック", "Yu Gothic", YuGothic, -apple-system, Verdana, Meiryo;
+    font-size: 16px;
+    overflow: hidden;
+    position: relative
+}
+body, html {
+    min-height:100vh;
+}
+@supports (-webkit-touch-callout: none) {
+    body, html {
+        min-height:-webkit-fill-available
+    }
+}
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color:transparent;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+h1,h2,h3,h4,h5,h6,th {
+    font-weight: bold;
+    font-feature-settings: "palt";
+    word-wrap:break-word;
+}
+h2 small, h3 small, h4 small, h5 small, h6 small {
+    font-size:.4em
+}
+h2 {
+    font-size: 3rem;
+    margin-top: 4rem;
+    margin-bottom:1rem
+}
+h3 {
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom:1rem
+}
+h4 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom:1rem
+}
+
+img {
+    display: block;
+}

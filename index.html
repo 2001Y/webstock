@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang=ja>
+<head>
+  <meta charset=utf-8>
+  <meta name=robots content="noindex,nofollow,noarchive">
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="reset.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <title>minEditor</title>
+</head>
+<body>
+  <header>
+    <h1><a href="https://webstock.dev" id="Htitleurl" class="loading">webstock.dev</a></h1>
+    <input type="checkbox" id="nologinCheck">
+    <label for="nologinCheck" id="login" class="nologin"></label>
+    <label for="nologinCheck" id="tokenWin" class="close">
+      <div>
+        <h3>Gist Access Token</h3>
+        <form target="sendPhoto">
+          <input type="text" id="Htoken">
+          <input type="submit" value="save" onclick='setToken();'>
+        </form>
+      </div>
+    </label>
+    <form target="sendPhoto" id="add">
+      <input type="text" id="add_url">
+      <input type="submit" value="add" onclick='addGist(add_url.value);add_url.value="";'>
+    </form>
+    <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
+  </header>
+  <main>
+    <ul id="Hstock"></ul>
+  </main>
+</body>

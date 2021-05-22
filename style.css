@@ -1,0 +1,140 @@
+@charset "UTF-8";
+body {
+  background: #f2f2eb;
+  font-family: monospace,"游ゴシック", "Yu Gothic", YuGothic;
+  font-weight: bold;
+}
+
+img {
+  width: 300px;
+}
+
+header {
+  height: 3.5em;
+  padding: 0 1.7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  width: 15em;
+  border-bottom: 1px solid #000;
+}
+
+input[type="submit"] {
+  width: auto;
+  padding-left: .5em;
+}
+
+#add {
+  margin-left: auto;
+}
+
+#login {
+  font-size: .7em;
+  padding: .7em 0 0 .5em;
+}
+
+.nologin {
+  color: #d60909;
+}
+
+.nologin::after {
+  content: "nologin";
+}
+
+.login {
+  color: #20c902;
+}
+
+.login::after {
+  content: "login";
+}
+
+.done {
+  animation: done 2s;
+}
+
+.loading, .warning, .err {
+  animation: loading .5s infinite;
+}
+
+.warning {
+  color: #dbd806;
+}
+
+.err {
+  color: #d60909;
+}
+
+@keyframes done {
+  20% {
+    color: #20c902;
+  }
+  80% {
+    color: #20c902;
+  }
+}
+
+@keyframes loading {
+  0% {
+    opacity: .3;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .3;
+  }
+}
+
+main {
+  min-height: calc(100vh - 3.5em);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#Hstock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#nologinCheck:checked + label + label {
+  visibility: visible;
+}
+
+#tokenWin {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+#tokenWin div {
+  padding: 2em;
+  background: #f2f2eb;
+}
+
+#tokenWin h3 {
+  margin: 0 0 1em 0;
+}
+/*# sourceMappingURL=style.css.map */
