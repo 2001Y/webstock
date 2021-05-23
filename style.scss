@@ -32,6 +32,12 @@ input {
 #add {
   margin-left: auto;
 }
+.close {
+  visibility: hidden;
+}
+.open {
+  visibility: visible;
+}
 
 #login {
   font-size: .7em;

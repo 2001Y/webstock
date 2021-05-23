@@ -40,6 +40,14 @@ input[type="submit"] {
   margin-left: auto;
 }
 
+.close {
+  visibility: hidden;
+}
+
+.open {
+  visibility: visible;
+}
+
 #login {
   font-size: .7em;
   padding: .7em 0 0 .5em;

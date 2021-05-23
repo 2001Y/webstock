@@ -6,6 +6,7 @@ if (location.search) {
   if (localStorage.getItem(user + "_token")) {
     Htoken.value = localStorage.getItem(user + "_token");
     login.classList.replace("nologin", "login");
+    add.classList.replace("close", "open");
   }
 } else {
   document.location = "/about.html";
@@ -104,8 +105,10 @@ function setToken() {
   nologinCheck.checked = false;
   if (localStorage.getItem(user + "_token")) {
     login.classList.replace("nologin", "login");
+    add.classList.replace("close", "open");
   } else {
     login.classList.replace("login", "nologin");
+    add.classList.replace("open", "close");
   }
 }
 
