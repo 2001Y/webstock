@@ -33,10 +33,10 @@ input {
   margin-left: auto;
 }
 .close {
-  visibility: hidden;
+  display: none;
 }
 .open {
-  visibility: visible;
+  display:inherit
 }
 
 #login {
