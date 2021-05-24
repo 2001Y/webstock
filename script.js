@@ -2,6 +2,8 @@ if (location.search) {
   user = location.search.slice(1);
   Htitleurl.innerHTML = "webstock.dev?" + user;
   document.title = "webstock.dev?" + user;
+  og_title.content = "webstock.dev?" + user;
+  og_url.content = "https://webstock.dev?" + user;
   Htitleurl.href = "https://webstock.dev?" + user;
   getGistList(user);
   if (localStorage.getItem(user + "_token")) {
