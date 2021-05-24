@@ -9,22 +9,23 @@
   <link rel="stylesheet" href="style.css"/>
   <title>webstock.dev</title>
 </head>
-<body>
+<body class="nologin noedit">
   <header>
     <h1><a href="https://webstock.dev" id="Htitleurl" class="loading">webstock.dev</a></h1>
     <input type="checkbox" id="nologinCheck">
-    <label for="nologinCheck" id="login" class="nologin"></label>
-    <label for="nologinCheck" id="tokenWin" class="close">
-      <div>
+    <label for="nologinCheck" id="login"></label>
+    <label for="nologinCheck" id="tokenWinBg" class="close">
+      <label htmlFor="no" id="tokenWin">
         <h3>Gist Access Token</h3>
         <form target="sendPhoto">
           <input type="text" id="Htoken">
           <input type="submit" value="save" onclick='setToken();'>
         </form>
-      </div>
+      </label>
     </label>
     <form target="sendPhoto" id="add" class="close">
-      <input type="text" id="add_url">
+      <button onclick='document.body.classList.toggle("noedit");'>edit</button>・
+      <input type="text" id="add_url" autofocus>
       <input type="submit" value="add" onclick='addGist(add_url.value);add_url.value="";'>
     </form>
     <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
@@ -32,4 +33,14 @@
   <main>
     <ul id="Hstock"></ul>
   </main>
+  <footer>
+    <div>
+      <a href="https://webstock.dev" target="_blank">
+        ©︎webstock.dev
+      </a>
+      <a href="https://2001y.me" target="_blank">
+        by<span>2001Y</span>
+      </a>
+    </div>
+  </footer>
 </body>

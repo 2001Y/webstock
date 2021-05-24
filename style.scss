@@ -20,6 +20,10 @@ h1 {
 form {
   display: flex;
   justify-content: center;
+  align-items: center;
+  input {
+    height: 1.5em;
+  }
 }
 input {
   width: 15em;
@@ -31,12 +35,18 @@ input {
 }
 #add {
   margin-left: auto;
-}
-.close {
-  display: none;
-}
-.open {
-  display:inherit
+  @media (max-width: 900px) {
+    height: 3em;
+    width: 100vw;
+    background: #f2f2eb;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
 }
 
 #login {
@@ -44,15 +54,28 @@ input {
   padding: .7em 0 0 .5em;
 }
 .nologin {
-  color: #d60909;
-  &::after {
-    content: "nologin";
+  #login {
+    color: #d60909;
+    &::after {
+      content: "nologin";
+    }
+  }
+  #add {
+    display: none;
+  }
+  .delete {
+    display: none;
   }
 }
 .login {
-  color: #20c902;
-  &::after {
-    content: "login";
+  #login {
+    color: #20c902;
+    &::after {
+      content: "login";
+    }
+  }
+  #add {
+    display: flex;
   }
 }
 
@@ -89,7 +112,7 @@ input {
 }
 
 main {
-  min-height: calc(100vh - 3.5em);
+  min-height: calc(100vh - 7.5em);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,11 +123,35 @@ main {
   align-items: center;
   flex-wrap:wrap;
 }
+.site {
+  position: relative;
+  margin: .5em;
+}
+.delete {
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 100%;
+  color: #fff;
+  background: #000;
+  position: absolute;
+  top: -.75em;
+  right: -.75em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  cursor: pointer;
+}
+.noedit {
+  .delete {
+    visibility: hidden;
+  }
+}
 
-#nologinCheck:checked + label + label {
+#nologinCheck:checked + label + #tokenWinBg {
   visibility: visible;
 }
-#tokenWin {
+#tokenWinBg {
   background: rgba(0, 0, 0, 0.3);
   width: 100vw;
   height: 100%;
@@ -115,11 +162,20 @@ main {
   top: 0;
   left: 0;
   visibility: hidden;
-  div {
+  z-index: 9999;
+  label {
     padding: 2em;
     background: #f2f2eb;
+    cursor: default;
   }
   h3 {
     margin: 0 0 1em 0;
   }
+}
+
+footer {
+  height: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,29 +1,29 @@
 if (location.search) {
   user = location.search.slice(1);
   Htitleurl.innerHTML = "webstock.dev?" + user;
+  document.title = "webstock.dev?" + user;
   Htitleurl.href = "https://webstock.dev?" + user;
   getGistList(user);
   if (localStorage.getItem(user + "_token")) {
     Htoken.value = localStorage.getItem(user + "_token");
-    login.classList.replace("nologin", "login");
-    add.classList.replace("close", "open");
+    document.body.classList.replace("nologin", "login");
   }
 } else {
-  document.location = "/about.html";
+  document.location = "about.html";
 }
 
 async function view(content) {  
   localStorage.setItem(user + "_webstock", JSON.stringify(content));
   var stockList = '';
   content.forEach(function(value) {
-    stockList += '<li><img class=site src="https://s.wordpress.com/mshots/v1/'+value+'"></li>';
+    stockList += '<li class=site><div class=delete>×</div><img src="https://s.wordpress.com/mshots/v1/'+value+'"></li>';
   });
   Hstock.innerHTML = stockList;
 
-  document.querySelectorAll(".site").forEach((elm,i) => {
+  document.querySelectorAll(".delete").forEach((elm,i) => {
     elm.addEventListener("click", () => {
       let webstock = JSON.parse(localStorage.getItem(user + "_webstock"));
-      webstock.splice(i, 1)
+      webstock.splice(i, 1);
       view(webstock);
       setGist(webstock);
     });
@@ -36,14 +36,14 @@ async function getGistList() {
     getGist(localStorage.getItem(user+"_id"));
     console.log("id > view");
   } else {
-    await (await fetch("https://api.github.com/users/"+user+"/gists",{cache:"reload"})).json()
+    await (await fetch("https://api.github.com/users/" + user + "/gists", { cache: "reload" })).json()
       .then(data => {
         let state = 0;
         data.forEach(function (value) {
-          if (value.files["webstock.json"]){
+          if (value.files["webstock.json"]) {
             let url = new URL(value.files["webstock.json"].raw_url);
             let url_id = url.pathname.split('/')[2];
-            localStorage.setItem(user+"_id", url_id);
+            localStorage.setItem(user + "_id", url_id);
             getGist(url_id);
             console.log("userName > id > view");
             state = 1;
@@ -53,16 +53,16 @@ async function getGistList() {
           Htitleurl.classList.replace("loading", "warning");
           Hstock.innerHTML = "ERROR: not found webstock.json on your gist.";
         }
-    })
-    .catch(err => {
-      Htitleurl.classList.replace("loading", "err");
-    })
+      })
+      .catch(err => {
+        Htitleurl.classList.replace("loading", "err");
+      });
   }
 }
 
 async function getGist(id) {
   Htitleurl.classList.replace("done", "loading");
-  await (await fetch("https://api.github.com/gists/"+id,{cache: "reload"})).json()
+  await (await fetch("https://api.github.com/gists/" + id, { cache: "reload" })).json()
     .then(data => {
       const array = JSON.parse(data.files["webstock.json"].content);
       view(array);
@@ -70,13 +70,13 @@ async function getGist(id) {
     })
     .catch(err => {
       Htitleurl.classList.replace("loading", "err");
-  })
+    });
 }
 
 async function setGist(content) {
   Htitleurl.classList.replace("done", "loading");
   let token = localStorage.getItem(user + "_token");
-  await fetch("https://api.github.com/gists/"+localStorage.getItem(user+"_id"), {
+  await fetch("https://api.github.com/gists/" + localStorage.getItem(user + "_id"), {
     method: "PATCH",
     headers: {
       Accept: "application/vnd.github.v3+json",
@@ -97,19 +97,7 @@ async function setGist(content) {
   })
     .catch(err => {
       Htitleurl.classList.replace("loading", "err");
-  })
-}
-
-function setToken() {
-  localStorage.setItem(user + "_token", Htoken.value);
-  nologinCheck.checked = false;
-  if (localStorage.getItem(user + "_token")) {
-    login.classList.replace("nologin", "login");
-    add.classList.replace("close", "open");
-  } else {
-    login.classList.replace("login", "nologin");
-    add.classList.replace("open", "close");
-  }
+    });
 }
 
 function addGist(e) {
