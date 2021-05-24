@@ -111,3 +111,13 @@ function addGist(e) {
     // }, 1000);
   }, 10000);
 }
+
+function setToken() {
+  localStorage.setItem(user + "_token", Htoken.value);
+  nologinCheck.checked = false;
+  if (localStorage.getItem(user + "_token")) {
+    document.body.classList.replace("nologin", "login");
+  } else {
+    document.body.classList.replace("login", "nologin");
+  }
+}
